@@ -1,0 +1,59 @@
+
+Be-Breeder help page "Diallel Analysis":
+
+
+#############################
+#### Phenotypic Breeding ####
+#############################
+
+# General informations:
+
+This tab uses the packages EMMREML (Akdemir and Godfrey, 2015) and breedR (Muñoz et al. 2017)
+
+
+There are three options for Diallel Analysis: Griffing's, Gardner and Eberhart's, and Factorial designs.
+
+When Griffing’s methodology is chosen, Be-Breeder 2.0 intuitively points out which one of the four possible methods the dataset belongs. 
+They are 1) Method 1 (full diallel): parents, F1, and reciprocals, 2) Method 2 (half diallel): parents and F1’s, 4) Method 4: F1’s. 
+Then, the analysis is performed according to it. The application is also capable of this function for Gardner and Eberhart’s methodology.
+
+Input data file:
+
+The columns sequence must be: female parent , named as "female"; male parent, named as "male"; and one column
+for each trait of interest. For all of them, the information must be given in a numeric manner, including female and male identification.
+Example: in the following table, row 1 (female 1 and male 1) indicates self cross, while row 2 (female 1 and male 2) an hybrid from cross 
+between female 1 and male 2.
+
+  female  male   PG
+      1    1 	12.63
+      1    2 	11.84
+      1    3 	14.34
+      1    4 	15.74
+      2    1 	13.29
+      2    2 	10.70
+      2    3 	12.34
+      2    4 	13.57
+      3    1 	16.94
+      3    2 	10.77
+      3    3 	11.22
+      3    4 	13.67
+      4    1 	25.06
+      4    2 	13.43
+      4    3 	13.83
+      4    4 	11.54
+
+
+Values:
+
+Vu - estimate of variance (u);
+Ve - estimate of variance (error);
+betahat - BLUEs for β;
+uhat - BLUPs for u;
+Xsqtestbeta - chi-square test statistics for testing whether the fixed effect coefficients are equal to zero;
+pvalbeta - pvalues obtained from large sample theory for the fixed effects;
+Xsqtestu - chi-square test statistic values for testing whether the BLUPs are equal to zero.;
+pvalu - pvalues obtained from large sample theory for the BLUPs;
+varuhat - Large sample variance for the BLUPs;
+varbetahat - Large sample variance for the β's;
+PEVuhat - Prediction error variance estimates for the BLUPs;
+loglik - loglikelihood for the model.
