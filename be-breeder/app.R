@@ -42,7 +42,8 @@
   library(cluster)
   library(fpc)
   library(stringr)
- #library(snpReady)
+  library(impute)
+  library(snpReady)
   library(corrgram)
   library(corrr)
   library(tableHTML)
@@ -125,14 +126,14 @@
                menuItem("Experiment Designs",icon = icon("angle-double-right"),
                         menuSubItem("Designs",tabName ="subitem18"))),
       menuItem("Molecular Breeding", icon = icon("sitemap"),
-               # menuItem("Genotyping Data",icon = icon("wrench"),
-               #          menuItem("Quality Control", icon = icon("angle-double-right"),
-               #          menuSubItem("Sample Set",tabName = "mol121", icon = icon("angle-double-right")),
-               #          menuSubItem("HapMap",tabName = "mol1212", icon = icon("angle-double-right")),
-               #          menuSubItem("Raw Data",tabName = "mol122", icon = icon("angle-double-right"))),
-               #          menuItem("Kinship Matrix", icon = icon("angle-double-right"),
-               #          menuSubItem("Z Matrix",tabName = "mol11", icon = icon("angle-double-right")),
-               #          menuSubItem("Kinship Matrix", tabName = "mol13", icon = icon("angle-double-right")))),
+               menuItem("Genotyping Data",icon = icon("wrench"),
+                        menuItem("Quality Control", icon = icon("angle-double-right"),
+                        menuSubItem("Sample Set",tabName = "mol121", icon = icon("angle-double-right")),
+                        menuSubItem("HapMap",tabName = "mol1212", icon = icon("angle-double-right")),
+                        menuSubItem("Raw Data",tabName = "mol122", icon = icon("angle-double-right"))),
+                        menuItem("Kinship Matrix", icon = icon("angle-double-right"),
+                        menuSubItem("Z Matrix",tabName = "mol11", icon = icon("angle-double-right")),
+                        menuSubItem("Kinship Matrix", tabName = "mol13", icon = icon("angle-double-right")))),
                menuItem("Genomic Selection (GS)",icon = icon("angle-double-right"),
                         menuItem("GS analysis",icon = icon("angle-double-right"),
                         menuSubItem("Phenotypic file", tabName = "mol21", icon = icon("angle-double-right")),
@@ -163,8 +164,7 @@
                menuSubItem("About Be-Breeder 2.0", tabName = "info1", icon = icon("angle-double-right")),
                menuSubItem("Please cite us", tabName = "info2", icon = icon("angle-double-right")),
                menuSubItem("Team Contact", tabName = "info3", icon = icon("angle-double-right"))),
-      menuItem(" ",icon = icon("angle-right"), badgeLabel = "Download Manual",badgeColor = "red",href = "http://vencovsky.esalq.usp.br:3838/shiny/manual/Manual_BeBreeder.pdf"),
-      htmlTemplate("flagC.html",align = "center")
+      menuItem(" ",icon = icon("angle-right"), badgeLabel = "Download Manual",badgeColor = "red",href = "https://github.com/rfn-qtl/be-breeder/blob/main/Manual_BeBreeder.pdf")
       ))
   
 # #####################################################################################################################################################################################
@@ -1568,7 +1568,7 @@ tabItem("mol62",
 
       tabItem("info1",         
               fluidPage(
-                titlePanel("About Be-Breeder 2.0"),
+                titlePanel("About Be-Breeder 2.1"),
                 br(),
                 # fluidRow(
                 h4(em("Be-Breeder is a R/Shiny application for phenotypic and molecular analyses in the plant breeding context, developed by Prof. Dr. Roberto Fritsche-Neto, 
@@ -1576,8 +1576,8 @@ Dr. Filipe Inacio Matias, and Dr. Julia Silva Morosini, who integrated the Labor
 'Luiz de Queiroz' College of Agriculture, University of Sao Paulo, Brazil.")),
 br(),
 br(),
-h4(em("In its newest version, Be-Breeder 2.0, the platform is designed to consistently address a great variety of phenotypic, genetic, and statistical subjects,
-supported by numeric and graphic outputs. Be-Breeder 2.0 is freely accessible and the source code is hosted at",
+h4(em("In its newest version, Be-Breeder 2.1, the platform is designed to consistently address a great variety of phenotypic, genetic, and statistical subjects,
+supported by numeric and graphic outputs. Be-Breeder 2.1 is freely accessible and the source code is hosted at",
 a(href= "https://github.com/rfn-qtl/be-breeder/", "https://github.com/filipematias23/Be-Breeder/", "https://github.com/filipematias23/Be-Breeder/", target="_blank"))),
                 # pre(includeText("BeBreederAbout.txt")))
 br(),
@@ -2065,10 +2065,12 @@ h1()
      
        output$cont.Lear.81g <- renderPlot({
          source("missVGrec.R")
-         if(cont.Lear.8.1a()[[3]]==0){return(NULL)}
-         if(input$Lear81.21==0|input$Lear81.22==0){return(NULL)}
-         missVg(cont.Lear.8.1a()[[3]], cont.Lear.8.1a()[[3]],input$Lear81.6)})
-      
+         if(t(as.data.frame(cont.Lear.8.1a()))[[3]]==0){return(NULL)}
+         if(t(as.data.frame(cont.Lear.8.1a()))[[4]]==0){return(NULL)}
+         missVg(t(as.data.frame(cont.Lear.8.1a()))[[3]], 
+                t(as.data.frame(cont.Lear.8.1a()))[[4]],
+                input$Lear81.6)})
+       
 # #####################################################################################################################################################################################
       
      # Lean.9.1
