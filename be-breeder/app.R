@@ -161,7 +161,7 @@
                                  menuSubItem("Z Matrix",tabName = "mol52",icon = icon("angle-double-right")),
                                  menuSubItem("PopGen Analysis",tabName = "mol53",icon = icon("angle-double-right"))))),
       menuItem("Information", icon = icon("info-circle"),
-               menuSubItem("About Be-Breeder 2.0", tabName = "info1", icon = icon("angle-double-right")),
+               menuSubItem("About Be-Breeder 2.1", tabName = "info1", icon = icon("angle-double-right")),
                menuSubItem("Please cite us", tabName = "info2", icon = icon("angle-double-right")),
                menuSubItem("Team Contact", tabName = "info3", icon = icon("angle-double-right"))),
       menuItem(" ",icon = icon("angle-right"), badgeLabel = "Download Manual",badgeColor = "red",href = "https://github.com/rfn-qtl/be-breeder/blob/main/Manual_BeBreeder.pdf")
@@ -177,10 +177,10 @@
       tabItem("start", box(status = "primary", height = 700, width = 600, align = "center",
 
                            br(),
-                           tags$style(make_css(list('.box', 
-                                                    c('text-align','font-size', 'font-family', 'color'), 
-                                                    c('top','25px', 'arial', 'red')))),
-                           strong("version 2.1"),
+                           # tags$style(make_css(list('.box', 
+                           #                          c('text-align','font-size', 'font-family', 'color'), 
+                           #                          c('top','25px', 'arial', 'red')))),
+                           # strong("version 2.1"),
                            br(),
                             br(),
                            a(id = "web_button", class = "btn action_button",

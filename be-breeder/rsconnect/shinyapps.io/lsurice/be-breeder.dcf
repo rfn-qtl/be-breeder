@@ -5,5 +5,5 @@ account: lsurice
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 9870745
-bundleId: 7717418
+bundleId: 7724947
 url: https://lsurice.shinyapps.io/be-breeder/
